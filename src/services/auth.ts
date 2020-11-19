@@ -14,7 +14,9 @@ export interface User {
 function parseUserObject(user: firebase.User): User {
   return {
     uid: user.uid,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     displayName: user.displayName!,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     email: user.email!,
     emailVerified: user.emailVerified,
     ...(user.photoURL ? { photoURL: user.photoURL } : {}),
