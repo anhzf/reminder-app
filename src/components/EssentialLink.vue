@@ -1,20 +1,29 @@
 <template>
   <q-item
+    v-ripple
     clickable
     tag="a"
-    target="_blank"
-    :href="link"
+    :to="to"
   >
     <q-item-section
       v-if="icon"
       avatar
+      class="q-pl-xs"
     >
-      <q-icon :name="icon" />
+      <q-icon
+        color="blue-grey-5"
+        :name="icon"
+      />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>
+      <q-item-label class="text-dark">
+        {{ title }}
+      </q-item-label>
+      <q-item-label
+        v-if="caption"
+        caption
+      >
         {{ caption }}
       </q-item-label>
     </q-item-section>
@@ -37,9 +46,9 @@ export default defineComponent({
       default: '',
     },
 
-    link: {
-      type: String,
-      default: '#',
+    to: {
+      type: [String, Object],
+      default: '',
     },
 
     icon: {

@@ -5,7 +5,21 @@ const routes: RouteConfig[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
+      {
+        name: 'Home',
+        path: '',
+        component: () => import('pages/Index.vue'),
+      },
+      {
+        name: 'MyTask',
+        path: 'my-task',
+        component: () => import('pages/MyTask.vue'),
+      },
+      {
+        name: 'Settings',
+        path: 'settings',
+        component: () => import('pages/Settings.vue'),
+      },
     ],
   },
 
