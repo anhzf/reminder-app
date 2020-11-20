@@ -31,6 +31,7 @@ export default defineComponent({
   name: 'TaskCard',
 
   setup() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, no-bitwise
     const tasks = ref([...Array(~~(Math.random() * 100))].map((v, i) => ({ todo: `task ${i}`, done: false })));
     return { tasks };
   },
