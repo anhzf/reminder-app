@@ -25,6 +25,22 @@
           />
         </q-item-section>
       </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label>
+            <q-input
+              v-model="newItem"
+              placeholder="Add some task here..."
+              filled
+            >
+              <template v-slot:prepend>
+                <q-icon name="add" />
+              </template>
+            </q-input>
+          </q-item-label>
+        </q-item-section>
+      </q-item>
     </template>
 
     <template v-else>
@@ -49,6 +65,13 @@
         </q-item-section>
       </q-item>
     </template>
+
+    <h4
+      v-if="tasks.length <= 0"
+      class="text-center"
+    >
+      There's no task to do :DD
+    </h4>
   </q-list>
 </template>
 
@@ -69,6 +92,7 @@ export default defineComponent({
     return {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, no-bitwise
       tasks: [...Array(~~(Math.random() * 20))].map((v, i) => ({ todo: `task ${i}`, done: false })),
+      newItem: null,
     };
   },
 
@@ -77,7 +101,6 @@ export default defineComponent({
       this.tasks.splice(id, 1);
     },
   },
-
 });
 </script>
 

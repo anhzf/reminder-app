@@ -17,7 +17,7 @@
         size="lg"
         :color="fabBgColor"
         text-color="white"
-        @click="editMode = !editMode"
+        @click="fabAction"
       />
     </q-page-sticky>
   </q-page>
@@ -26,6 +26,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import TaskCard from 'components/TaskCard.vue';
+import { DialogChainObject } from 'quasar';
 
 export default defineComponent({
   name: 'PageMyTask',
@@ -46,6 +47,22 @@ export default defineComponent({
     },
     fabBgColor() {
       return this.editMode ? 'green' : 'light-blue-6';
+    },
+
+    fabAction(): VoidFunction | DialogChainObject {
+      const editTask = () => {
+        this.editMode = true;
+      };
+      const confirmation = () => {
+        this.$q.dialog({
+          title: 'Confirm',
+          message: 'Are you sure to make this change ?',
+          cancel: true,
+        }).onOk(() => {
+          this.editMode = false;
+        });
+      };
+      return this.editMode ? confirmation : editTask;
     },
   },
 });
