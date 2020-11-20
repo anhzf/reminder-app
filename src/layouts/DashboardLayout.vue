@@ -117,6 +117,12 @@
           v-bind="link"
         />
 
+        <essential-link
+          title="Logout"
+          icon="exit_to_app"
+          :action="logout"
+        />
+
         <q-separator class="q-my-sm" />
 
         <essential-link
@@ -135,12 +141,15 @@
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
 import EssentialLink from 'components/EssentialLink.vue';
+import { authComposition } from 'src/services/auth';
+
+const { logout } = authComposition();
 
 const navData = [
   {
     title: 'My Profile',
     icon: 'person',
-    to: { name: 'Home' },
+    to: { name: 'MyProfile' },
   },
   {
     title: 'My Task',
@@ -152,15 +161,10 @@ const navData = [
     icon: 'settings',
     to: { name: 'Settings' },
   },
-  {
-    title: 'Logout',
-    icon: 'exit_to_app',
-    '@click': console.log('%cLogged Out!', 'color: red; background-color: white'),
-  },
 ];
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: 'DashboardLayout',
 
   components: {
     EssentialLink,
@@ -170,7 +174,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
     const essentialLinks = ref(navData);
 
-    return { leftDrawerOpen, essentialLinks };
+    return { leftDrawerOpen, essentialLinks, logout };
   },
 });
 </script>

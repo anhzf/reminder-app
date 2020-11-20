@@ -49,3 +49,13 @@ export default {
     await firebase.auth().signOut();
   },
 };
+
+export const authComposition = () => {
+  const logout = function () {
+    console.log('%cLogged Out!', 'color: red; background-color: white');
+  };
+
+  return {
+    logout,
+  };
+};

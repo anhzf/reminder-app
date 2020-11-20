@@ -2,12 +2,17 @@ import { RouteConfig } from 'vue-router';
 
 const routes: RouteConfig[] = [
   {
+    name: 'Home',
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('pages/Home.vue'),
+  },
+  {
+    path: '/',
+    component: () => import('layouts/DashboardLayout.vue'),
     children: [
       {
-        name: 'Home',
-        path: '',
+        name: 'MyProfile',
+        path: 'my-profile',
         component: () => import('pages/Index.vue'),
       },
       {
