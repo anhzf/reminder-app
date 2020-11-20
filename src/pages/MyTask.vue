@@ -4,7 +4,7 @@
       My Daily Task
     </h2>
 
-    <task-card />
+    <task-card :edit-mode="editMode" />
 
     <q-page-sticky
       position="bottom-right"
@@ -12,11 +12,12 @@
     >
       <q-btn
         fab
-        icon="edit"
+        :icon="fabIcon"
         round
         size="lg"
-        color="light-blue-6"
+        :color="fabBgColor"
         text-color="white"
+        @click="editMode = !editMode"
       />
     </q-page-sticky>
   </q-page>
@@ -31,6 +32,21 @@ export default defineComponent({
 
   components: {
     TaskCard,
+  },
+
+  data() {
+    return {
+      editMode: false,
+    };
+  },
+
+  computed: {
+    fabIcon() {
+      return this.editMode ? 'done' : 'edit';
+    },
+    fabBgColor() {
+      return this.editMode ? 'green' : 'light-blue-6';
+    },
   },
 });
 </script>

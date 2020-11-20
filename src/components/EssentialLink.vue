@@ -2,7 +2,6 @@
   <q-item
     v-ripple
     clickable
-    tag="a"
     :to="to"
     @click="action"
   >
@@ -59,7 +58,7 @@ export default defineComponent({
 
     action: {
       type: Function,
-      required: false,
+      default: () => false,
     },
   },
 });
