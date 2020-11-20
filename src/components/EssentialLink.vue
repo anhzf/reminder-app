@@ -4,6 +4,7 @@
     clickable
     tag="a"
     :to="to"
+    @click="action"
   >
     <q-item-section
       v-if="icon"
@@ -54,6 +55,11 @@ export default defineComponent({
     icon: {
       type: String,
       default: '',
+    },
+
+    action: {
+      type: Function,
+      required: false,
     },
   },
 });
