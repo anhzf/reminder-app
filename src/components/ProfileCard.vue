@@ -7,7 +7,6 @@
     <div class="profile-card__edit-btn">
       <q-btn
         icon="edit"
-        size="sm"
         color="blue"
         round
         flat

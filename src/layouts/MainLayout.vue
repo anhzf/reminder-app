@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh Lpr fFf">
+  <q-layout view="lHh Lpr fFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -36,40 +36,52 @@
           </q-menu>
         </q-btn>
 
-          <q-btn-dropdown
-              label="Hi, Alwan!"
-              no-caps
-              flat
-              auto-close
-              align="center"
-              class="gt-xs"
-          >
-            <q-list style="min-width: 150px">
-              <q-item>
-                <q-item-section avatar>
-                    <q-avatar>
-                        <q-img src="https://lh3.googleusercontent.com/a-/AOh14GiRwRAaixzKCat8PsljUIdjoUwJywYXmtoI9zB8Lw=s384-c-rg-br100" />
-                    </q-avatar>
-                </q-item-section>
+        <q-btn-dropdown
+          label="Hi, Alwan!"
+          no-caps
+          flat
+          align="center"
+          class="gt-xs"
+        >
+          <q-list style="min-width: 150px">
+            <q-item class="bg-grey-2">
+              <q-item-section avatar>
+                <q-avatar>
+                  <q-img src="https://lh3.googleusercontent.com/a-/AOh14GiRwRAaixzKCat8PsljUIdjoUwJywYXmtoI9zB8Lw=s384-c-rg-br100" />
+                </q-avatar>
+              </q-item-section>
 
-                <q-item-section>
-                  <q-item-label>Alwan Nuha</q-item-label>
-                  <q-item-label caption lines="1">+62-851-5634-8055</q-item-label>
-                </q-item-section>
-              </q-item>
+              <q-item-section>
+                <q-item-label>Alwan Nuha</q-item-label>
+                <q-item-label
+                  caption
+                  lines="1"
+                >
+                  +62-851-5634-8055
+                </q-item-label>
+              </q-item-section>
+            </q-item>
 
-              <q-item>
-                <q-item-section>
-                    Settings
-                </q-item-section>
-              </q-item>
+            <q-separator />
 
-              <q-item>
-                <q-item-section>
-                    Logout
-                </q-item-section>
-              </q-item>
-            </q-list>
+            <q-item
+              clickable
+              v-ripple
+            >
+              <q-item-section>
+                Settings
+              </q-item-section>
+            </q-item>
+
+            <q-item
+              clickable
+              v-ripple
+            >
+              <q-item-section>
+                Logout
+              </q-item-section>
+            </q-item>
+          </q-list>
         </q-btn-dropdown>
       </q-toolbar>
     </q-header>
@@ -99,7 +111,7 @@
 
         <q-separator class="q-my-sm" />
 
-        <EssentialLink
+        <essential-link
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
@@ -143,7 +155,7 @@ const navData = [
   {
     title: 'Logout',
     icon: 'exit_to_app',
-    '@click': console.log('%cLogged Out!', 'color: red; background-color: white')
+    '@click': console.log('%cLogged Out!', 'color: red; background-color: white'),
   },
 ];
 
